@@ -1,12 +1,12 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
-import tflite_runtime.interpreter as tflite
+import tensorflow as tf
 import os
 
-# Load TFLite model using absolute path
+# Load TFLite model
 model_path = os.path.join(os.path.dirname(__file__), "potato_disease_model.tflite")
-interpreter = tflite.Interpreter(model_path=model_path)
+interpreter = tf.lite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
